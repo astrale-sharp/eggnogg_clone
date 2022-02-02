@@ -1,19 +1,21 @@
 extends CharacterBody2D
 
-const SPEED = 800.0
+const SPEED = 600.0
 const JUMP_FORCE = 800.0
 const WALL_JUMP_FORCE = 500 * Vector2(3,1)
 const ARM_SPEED = 300
 const ARM_MAX_ANGLE = 30
+const FRICTION = 0.4
+const GRAVITY := 980 * 3.5
 # Get the gravity from the project settings to be synced with RigidDynamicBody nodes.
-var gravity = 980 * 2.5
-var facing_right = true 
-var has_sword = true
-var jump_counter = 0
-var arm_rotation = 0:
+var acceleration := Vector2.ZERO
+var facing_right := true 
+var has_sword := true
+var jump_counter := 0
+var arm_rotation := 0.0:
 	set(value):
 		arm_rotation = value
-		$SpriteArm.rotation = value #Change that line
+		$Sprites/SpriteArm.rotation = value #Change that line
 
 @onready var animator = $AnimationPlayer
 @onready var arm = $Arm
@@ -35,12 +37,9 @@ func _ready():
 func set_facing_right(value: bool):
 	if facing_right != value:
 		if value:
-			print("set turn right")						
-			$AnimationPlayer.stop()
-			$AnimationPlayer.play("turn_right")
+			$Sprites.scale.x = 1
 		else:
-			$AnimationPlayer.stop()
-			$AnimationPlayer.play("turn_left")
+			$Sprites.scale.x = -1
 	facing_right = value 
 
 func set_has_sword(value):
@@ -52,14 +51,16 @@ func _physics_process(delta):
 		state._exit_state()
 		state = states[next_state]
 		state._enter_state()
-		
+
 func handle_direction():
 	var direction = Input.get_axis("ui_left", "ui_right")
 	if direction:
 		motion_velocity.x = direction * SPEED
 		set_facing_right(motion_velocity.x >= 0)  
 	else:
-		motion_velocity.x = move_toward(motion_velocity.x, 0, SPEED)
+		motion_velocity.x = move_toward(motion_velocity.x, 0, abs(motion_velocity.x) * FRICTION)
+
+
 
 func handle_arm():
 	var direction = Input.get_axis("ui_up", "ui_down")

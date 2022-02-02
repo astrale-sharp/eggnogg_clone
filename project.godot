@@ -23,3 +23,9 @@ _global_script_class_icons={
 config/name="4 . 0 Eggnoggclone"
 config/icon="res://icon.png"
 config/features=PackedStringArray("4.0", "Vulkan Clustered")
+
+[display]
+
+window/size/viewport_width=1980
+window/size/viewport_height=1080
+window/size/resizable=false

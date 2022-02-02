@@ -10,7 +10,7 @@ func _step(delta):
 	if not owner.is_on_floor():
 		if owner.is_on_wall() and owner.timer_on_wall.is_stopped():
 			return "on_wall"
-		owner.motion_velocity.y += owner.gravity * delta
+		owner.motion_velocity.y += owner.GRAVITY * delta
 		owner.move_and_slide()
 		if owner.animator.is_playing() and "turn" in owner.animator.current_animation :
 			await owner.animator.animation_finished
