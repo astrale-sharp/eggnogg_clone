@@ -4,9 +4,17 @@ func _enter_state():
 	pass
 
 func _step(delta):
-	owner.animator.play("idle")
-	owner.handle_direction()
-	owner.handle_arm()
+	if owner.motion_velocity.is_equal_approx(Vector2.ZERO):
+		if owner.animator.current_animation != "idle":
+#			owner.animator.stop()
+			print("interrupt_run")
+			owner.animator.play("idle")
+	else:
+		if owner.animator.current_animation != "running":
+#			owner.animator.stop()
+			owner.animator.play("running")		
+	owner.handle_direction(delta)
+	owner.handle_arm(delta)
 	owner.move_and_slide()
 	if not owner.is_on_floor():
 		return "falling"

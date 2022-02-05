@@ -16,14 +16,14 @@ func speed(jump_counter)-> float:
 func _enter_state():
 	owner.motion_velocity = Vector2.ZERO
 	owner.animator.stop()
-	owner.set_facing_right(not owner.facing_right)
+	owner.facing_right = not owner.facing_right
 	if owner.animator.is_playing():
 			await owner.animator.animation_finished
 	owner.animator.play("on_wall")
 	
 
 func _step(delta):
-	owner.handle_arm()
+	owner.handle_arm(delta)
 	if Input.is_action_just_pressed("ui_accept"):
 		return "falling"
 	else:
