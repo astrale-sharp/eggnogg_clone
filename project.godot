@@ -24,6 +24,7 @@ config/name="4 . 0 Eggnoggclone"
 config/icon="res://icon.png"
 config/features=PackedStringArray("4.0", "Vulkan Clustered")
 
-[display]
+[physics]
 
-window/size/resizable=false
+2d/run_on_thread=true
+common/physics_ticks_per_second=500

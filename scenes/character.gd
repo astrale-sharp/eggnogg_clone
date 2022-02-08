@@ -3,7 +3,7 @@ extends CharacterBody2D
 const JUMP_FORCE = 800.0
 const WALL_JUMP_FORCE = 500 * Vector2(3,1)
 
-const ARM_SPEED = deg2rad(5)
+const ARM_SPEED = deg2rad(0.2* 5)
 const ARM_MAX_ANGLE = deg2rad(30) 
 
 const FRICTION = 0.4
@@ -33,7 +33,7 @@ var arm_rotation := 0.0:
 		if state == $States/Idle:
 			$Sprites/Position2DArmRotation.rotation = value #Change that line
 		else:
-			$Sprites/Position2DArmRotation/Position2D.rotation = value
+			$Sprites/Position2DArmRotation/Position2DSword.rotation = value
 	
 @onready var animator = $AnimationPlayer
 #@onready var arm = $Arm
@@ -44,18 +44,18 @@ var arm_rotation := 0.0:
 	"falling" : $States/Falling,
 	"on_wall" : $States/OnWall,
 	"stunned" : $States/Stunned,
+	"running" : $States/Running
 }
 @onready var timer_on_wall = $TimerOnWall
 
 func _ready():
-#	print(Vector2(0.0,0.0) == Vector2(0.0,0.0) )
 	state._enter_state()
 	
 func spike_rotation():
 	print("spike")
 
 func _physics_process(delta):	
-	var next_state = await state._step(delta)
+	var next_state = state._step(delta)
 	if next_state:
 		state._exit_state()
 		state = states[next_state]
@@ -67,16 +67,11 @@ func handle_direction(delta):
 		acceleration = delta * ACCELERATION * direction
 		motion_velocity.x += acceleration
 		motion_velocity.x = clampf(motion_velocity.x,-MAX_SPEED,MAX_SPEED)
-#		if abs(motion_velocity.x) <= MIN_SPEED:
-#			motion_velocity.x = 0
 		facing_right = motion_velocity.x >= 0
 	else:
 		motion_velocity.x = move_toward(motion_velocity.x, 0, abs(motion_velocity.x) * FRICTION)
 
-
-
 func handle_arm(delta):
-	pass
 	var direction = Input.get_axis("ui_up", "ui_down")
 	if direction:
 		arm_rotation = move_toward(arm_rotation, ARM_MAX_ANGLE * sign(direction) , ARM_SPEED )

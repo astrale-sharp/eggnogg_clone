@@ -7,6 +7,7 @@ func _enter_state():
 
 func _step(delta):
 	owner.handle_direction(delta)
+	owner.handle_arm(delta)
 	if not owner.is_on_floor():
 		if owner.is_on_wall() and owner.timer_on_wall.is_stopped():
 			return "on_wall"

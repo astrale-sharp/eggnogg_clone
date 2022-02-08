@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://crf1g6fobvg2e"]
+[gd_scene load_steps=16 format=3 uid="uid://crf1g6fobvg2e"]
 
 [ext_resource type="Script" path="res://scenes/character.gd" id="1_w2rxn"]
 [ext_resource type="Texture2D" uid="uid://biwceegvwcmao" path="res://assets/misc.png" id="2_3f05y"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scenes/Falling.gd" id="3_ehb1h"]
 [ext_resource type="Script" path="res://scenes/Jumping.gd" id="3_xa8ra"]
 [ext_resource type="Script" path="res://scenes/OnWall.gd" id="7_11pwl"]
+[ext_resource type="Script" path="res://scenes/Running.gd" id="8_nihcd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ecjf6"]
 atlas = ExtResource( "2_e6sd8" )
@@ -216,7 +217,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_2byx7"]
 resource_name = "running"
 length = 0.31
-loop_mode = 2
+loop_mode = 1
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -284,7 +285,7 @@ script = ExtResource( "1_w2rxn" )
 position = Vector2(5, 9.5)
 
 [node name="Position2DSword" type="Position2D" parent="Sprites/Position2DArmRotation"]
-position = Vector2(14, -9.5)
+position = Vector2(15, -4.5)
 __meta__ = {
 "_edit_group_": true
 }
@@ -300,6 +301,7 @@ vframes = 8
 region_rect = Rect2(0, 0, 16, 16)
 
 [node name="SpriteArm" type="Sprite2D" parent="Sprites/Position2DArmRotation"]
+visible = false
 texture_filter = 1
 texture_repeat = 1
 position = Vector2(-6, -9.5)
@@ -316,6 +318,7 @@ scale = Vector2(5, 5)
 texture = SubResource( "AtlasTexture_ecjf6" )
 hframes = 8
 vframes = 9
+frame = 9
 
 [node name="CollisionBody" type="CollisionPolygon2D" parent="."]
 visible = false
@@ -337,6 +340,9 @@ script = ExtResource( "7_11pwl" )
 
 [node name="Crouch" type="Node2D" parent="States"]
 
+[node name="Running" type="Node2D" parent="States"]
+script = ExtResource( "8_nihcd" )
+
 [node name="Rampa" type="Node2D" parent="States"]
 
 [node name="Stunned" type="Node2D" parent="States"]
@@ -344,6 +350,8 @@ script = ExtResource( "7_11pwl" )
 [node name="Dying" type="Node2D" parent="States"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+reset_on_save = false
+playback_process_mode = 0
 method_call_mode = 1
 anims/RESET = SubResource( "Animation_rvdj2" )
 anims/falling_down = SubResource( "Animation_ukryt" )
