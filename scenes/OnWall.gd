@@ -24,7 +24,7 @@ func _enter_state():
 
 func _step(delta):
 	owner.handle_arm(delta)
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_jump"):
 		return "falling"
 	else:
 		owner.motion_velocity.y += speed(owner.jump_counter)

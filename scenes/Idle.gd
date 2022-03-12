@@ -20,7 +20,7 @@ func _step(delta):
 	if not owner.motion_velocity.is_equal_approx(Vector2.ZERO):
 		return "running"
 
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_jump"):
 		return "jumping"
 	
 func _exit_state():

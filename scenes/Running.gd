@@ -19,7 +19,7 @@ func _step(delta):
 		owner.animator.play("idle")
 		return "idle"
 
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_jump"):
 		return "jumping"
 	
 	owner.animator.play("running")
