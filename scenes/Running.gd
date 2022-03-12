@@ -1,7 +1,7 @@
 extends State
 
 func _enter_state():
-	print("runnning")
+	pass
 
 func _step(delta):
 	owner.handle_direction(delta)
@@ -14,7 +14,6 @@ func _step(delta):
 		return "falling"
 
 	if owner.motion_velocity.is_equal_approx(Vector2.ZERO):
-		print("thisstop")
 		owner.animator.stop()
 		owner.animator.play("idle")
 		return "idle"

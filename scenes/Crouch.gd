@@ -3,8 +3,7 @@ extends State
 func _enter_state():
 	owner._set_arm_rotation_at_0()
 	owner.animator.play("crouch")	
-	print("crouch!")
-
+	
 func _step(delta):
 	owner.handle_direction_while_crouched(delta)
 	owner.move_and_slide()

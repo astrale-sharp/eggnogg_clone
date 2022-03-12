@@ -18,10 +18,8 @@ var facing_right := true:
 	set(value):
 		if facing_right != value:
 			if value:
-				print("facing right")
 				$Sprites.scale.x = 1
 			else:
-				print("facing left")
 				$Sprites.scale.x = -1
 		facing_right = value 
 var has_sword := true:

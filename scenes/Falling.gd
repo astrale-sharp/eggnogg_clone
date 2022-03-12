@@ -1,7 +1,6 @@
 extends State
 
 func _enter_state():
-#	print("falling")
 	pass
 
 
