@@ -32,8 +32,10 @@ var arm_rotation := 0.0:
 	set(value):
 		arm_rotation = value
 		if state == $States/Idle:
-			$Sprites/Position2DArmRotation.rotation = value #Change that line
+			$Sprites/Position2DArmRotation/Position2DSword.rotation = 0
+			$Sprites/Position2DArmRotation.rotation = value
 		else:
+			$Sprites/Position2DArmRotation.rotation = 0
 			$Sprites/Position2DArmRotation/Position2DSword.rotation = value
 	
 @onready var animator = $AnimationPlayer
