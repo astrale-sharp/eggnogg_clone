@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
 const JUMP_FORCE = 800.0
-const WALL_JUMP_FORCE = 500 * Vector2(3,1)
+const WALL_JUMP_FORCE = 1500 * Vector2(3.5,0.7)
 
 const ARM_SPEED = deg2rad(0.2* 5)
 const ARM_MAX_ANGLE = deg2rad(30) 
 
-const FRICTION = 0.4
+const FRICTION = 0.3
 const GRAVITY := 980 * 3.5
 const MAX_SPEED := 600.0
 const ACCELERATION := 4000.0

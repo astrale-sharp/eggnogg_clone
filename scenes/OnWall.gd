@@ -38,9 +38,9 @@ func _exit_state():
 	
 	owner.jump_counter += 1
 	owner.motion_velocity = jump_velocity
-	var r = RayCast2D.new()
-	r.target_position = jump_velocity
-	owner.add_child(r)
+#	var r = RayCast2D.new()
+#	r.target_position = jump_velocity
+#	owner.add_child(r)
 	owner.move_and_slide()
 	
 #	owner.motion_velocity += direction
