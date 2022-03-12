@@ -19,10 +19,14 @@ func _step(delta):
 
 	if not owner.motion_velocity.is_equal_approx(Vector2.ZERO):
 		return "running"
+	
+	if Input.is_action_pressed("ui_down") and Input.is_action_just_pressed("ui_jump"):
+		return "crouch"
 
 	if Input.is_action_just_pressed("ui_jump"):
 		return "jumping"
 	
+		
 func _exit_state():
 #	owner.animator.stop()
 	pass

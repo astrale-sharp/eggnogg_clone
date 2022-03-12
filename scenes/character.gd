@@ -9,8 +9,9 @@ const ARM_MAX_ANGLE = deg2rad(30)
 const FRICTION = 0.4
 const GRAVITY := 980 * 3.5
 const MAX_SPEED := 600.0
-#const MIN_SPEED := 60.0
 const ACCELERATION := 4000.0
+
+const CROUCH_SPEED = 100.0
 # Get the gravity from the project settings to be synced with RigidDynamicBody nodes.
 var acceleration := 0
 var facing_right := true:
@@ -44,7 +45,8 @@ var arm_rotation := 0.0:
 	"falling" : $States/Falling,
 	"on_wall" : $States/OnWall,
 	"stunned" : $States/Stunned,
-	"running" : $States/Running
+	"running" : $States/Running,
+	"crouch"  : $States/Crouch
 }
 @onready var timer_on_wall = $TimerOnWall
 
@@ -53,6 +55,10 @@ func _ready():
 	
 func spike_rotation():
 	print("spike")
+
+func _set_arm_rotation_at_0():
+	$Sprites/Position2DArmRotation/Position2DSword.rotation = 0
+	$Sprites/Position2DArmRotation.rotation = 0
 
 func _physics_process(delta):	
 	var next_state = state._step(delta)
@@ -70,6 +76,15 @@ func handle_direction(delta):
 		facing_right = motion_velocity.x >= 0
 	else:
 		motion_velocity.x = move_toward(motion_velocity.x, 0, abs(motion_velocity.x) * FRICTION)
+
+func handle_direction_while_crouched(delta):
+	var direction = Input.get_axis("ui_left", "ui_right")
+	if direction:
+		motion_velocity.x = sign(direction) * CROUCH_SPEED
+		facing_right = motion_velocity.x >= 0
+	else:
+		motion_velocity.x = 0
+
 
 func handle_arm(delta):
 	var direction = Input.get_axis("ui_up", "ui_down")
