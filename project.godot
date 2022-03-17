@@ -21,6 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="4 . 0 Eggnoggclone"
+run/main_scene="res://scenes/test1.tscn"
 config/icon="res://icon.png"
 config/features=PackedStringArray("4.0", "Vulkan Clustered")
 
