@@ -74,7 +74,8 @@ func handle_direction(delta):
 		acceleration = delta * ACCELERATION * direction
 		motion_velocity.x += acceleration
 		motion_velocity.x = clampf(motion_velocity.x,-MAX_SPEED,MAX_SPEED)
-		facing_right = motion_velocity.x >= 0
+#		TODO : change this to fix weird glitch while sliding
+		facing_right = motion_velocity.x > 0
 	else:
 		motion_velocity.x = move_toward(motion_velocity.x, 0, abs(motion_velocity.x) * FRICTION)
 
@@ -85,7 +86,7 @@ func handle_direction_while_crouched(delta):
 		facing_right = motion_velocity.x >= 0
 	else:
 		motion_velocity.x = 0
-
+		
 
 func handle_arm(delta):
 	var direction = Input.get_axis("ui_up", "ui_down")
