@@ -1,5 +1,5 @@
 [x] Fix sword bug too high by changing the junction point code
-[ ] Accelerate running animation
+[x] Accelerate running animation
 [ ] ???Make running animation depend on running speed
 [ ] Add smoke effect running animation
 [ ] Add smoke effect wall jump
