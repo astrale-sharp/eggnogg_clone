@@ -4,7 +4,7 @@
 [ ] Add smoke effect running animation
 [ ] Add smoke effect wall jump
 [ ] Add smoke effect jump
-[ ] Add crouching
+[x] Add crouching
 [ ] Add sliding
 - [ ] add smoke effect
 - [ ] add after slide glide
