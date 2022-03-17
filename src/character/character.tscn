@@ -1,18 +1,18 @@
-[gd_scene load_steps=20 format=3 uid="uid://crf1g6fobvg2e"]
+[gd_scene load_steps=20 format=3 uid="uid://b6ljq57mhqgcr"]
 
-[ext_resource type="Script" path="res://scenes/character.gd" id="1_w2rxn"]
-[ext_resource type="Texture2D" uid="uid://biwceegvwcmao" path="res://assets/misc.png" id="2_3f05y"]
-[ext_resource type="Script" path="res://scenes/Idle.gd" id="2_82al5"]
-[ext_resource type="Texture2D" uid="uid://csppfmp8hu8t0" path="res://assets/sprites.png" id="2_e6sd8"]
-[ext_resource type="Script" path="res://scenes/Falling.gd" id="3_ehb1h"]
-[ext_resource type="Script" path="res://scenes/Jumping.gd" id="3_xa8ra"]
-[ext_resource type="Script" path="res://scenes/OnWall.gd" id="7_11pwl"]
-[ext_resource type="Script" path="res://scenes/Running.gd" id="8_nihcd"]
-[ext_resource type="Script" path="res://scenes/Crouch.gd" id="8_v0lh5"]
-[ext_resource type="Script" path="res://scenes/Sliding.gd" id="10_gjp7e"]
+[ext_resource type="Script" path="res://src/character/character.gd" id="1_afj60"]
+[ext_resource type="Texture2D" uid="uid://biwceegvwcmao" path="res://assets/misc.png" id="2_5pnl7"]
+[ext_resource type="Texture2D" uid="uid://csppfmp8hu8t0" path="res://assets/sprites.png" id="3_0dlbu"]
+[ext_resource type="Script" path="res://src/character/Idle.gd" id="4_0seu8"]
+[ext_resource type="Script" path="res://src/character/Jumping.gd" id="5_moinm"]
+[ext_resource type="Script" path="res://src/character/Falling.gd" id="6_f2fqs"]
+[ext_resource type="Script" path="res://src/character/OnWall.gd" id="7_bd6pw"]
+[ext_resource type="Script" path="res://src/character/Crouch.gd" id="8_x0p4i"]
+[ext_resource type="Script" path="res://src/character/Running.gd" id="9_cmdim"]
+[ext_resource type="Script" path="res://src/character/Sliding.gd" id="10_karpw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ecjf6"]
-atlas = ExtResource( "2_e6sd8" )
+atlas = ExtResource( "3_0dlbu" )
 region = Rect2(0, 0, 128, 144)
 filter_clip = true
 
@@ -552,7 +552,7 @@ tracks/5/keys = {
 }
 
 [node name="Character" type="CharacterBody2D"]
-script = ExtResource( "1_w2rxn" )
+script = ExtResource( "1_afj60" )
 
 [node name="Sprites" type="Node2D" parent="."]
 
@@ -573,7 +573,7 @@ texture_filter = 1
 texture_repeat = 1
 position = Vector2(30, 0)
 scale = Vector2(5, 5)
-texture = ExtResource( "2_3f05y" )
+texture = ExtResource( "2_5pnl7" )
 hframes = 8
 vframes = 8
 region_rect = Rect2(0, 0, 16, 16)
@@ -605,27 +605,27 @@ polygon = PackedVector2Array(-16, -32, -16, 40, 16, 40, 16, -32)
 [node name="States" type="Node2D" parent="."]
 
 [node name="Idle" type="Node2D" parent="States"]
-script = ExtResource( "2_82al5" )
+script = ExtResource( "4_0seu8" )
 
 [node name="Jumping" type="Node2D" parent="States"]
-script = ExtResource( "3_xa8ra" )
+script = ExtResource( "5_moinm" )
 
 [node name="Falling" type="Node2D" parent="States"]
-script = ExtResource( "3_ehb1h" )
+script = ExtResource( "6_f2fqs" )
 
 [node name="OnWall" type="Node2D" parent="States"]
-script = ExtResource( "7_11pwl" )
+script = ExtResource( "7_bd6pw" )
 
 [node name="Crouch" type="Node2D" parent="States"]
-script = ExtResource( "8_v0lh5" )
+script = ExtResource( "8_x0p4i" )
 
 [node name="Running" type="Node2D" parent="States"]
-script = ExtResource( "8_nihcd" )
+script = ExtResource( "9_cmdim" )
 
 [node name="Rampa" type="Node2D" parent="States"]
 
 [node name="Sliding" type="Node2D" parent="States"]
-script = ExtResource( "10_gjp7e" )
+script = ExtResource( "10_karpw" )
 
 [node name="Stunned" type="Node2D" parent="States"]
 

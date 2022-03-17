@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://qmcp50w7vwga"]
+[gd_scene load_steps=4 format=3 uid="uid://cfynishteihev"]
 
-[ext_resource type="PackedScene" uid="uid://crf1g6fobvg2e" path="res://scenes/character.tscn" id="1_fs6v4"]
+[ext_resource type="PackedScene" uid="uid://b6ljq57mhqgcr" path="res://src/character/character.tscn" id="1_no5ok"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_63xbs"]
 size = Vector2(1004, 125)
@@ -30,5 +30,5 @@ shape = SubResource( "RectangleShape2D_u8x6s" )
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(442, 316)
 
-[node name="Character" parent="." instance=ExtResource( "1_fs6v4" )]
+[node name="Character" parent="." instance=ExtResource( "1_no5ok" )]
 position = Vector2(440, 326)
