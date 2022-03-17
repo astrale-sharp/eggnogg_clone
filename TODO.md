@@ -9,6 +9,8 @@
 - [ ] add smoke effect
 - [ ] add after slide glide
 - [ ] fix glitch facing right more easily than left
+- [ ] slide only if your above a treshold speed
+
 [ ] Make it so facing_right works while sliding
 [ ] Add counted wall jumps
 [ ] Add wall sliding
@@ -19,5 +21,10 @@
 [ ] Add sword throw
 [ ] Add Stunned
 [ ] Add Death
+- [ ] particle effect
 [ ] Make ennemy face each other if close
+
+[ ] Add a first level
+[ ] Add camera managment
+[ ] Add death managment
 
