@@ -46,7 +46,8 @@ var arm_rotation := 0.0:
 	"on_wall" : $States/OnWall,
 	"stunned" : $States/Stunned,
 	"running" : $States/Running,
-	"crouch"  : $States/Crouch
+	"crouch"  : $States/Crouch,
+	"sliding" : $States/Sliding
 }
 @onready var timer_on_wall = $TimerOnWall
 
